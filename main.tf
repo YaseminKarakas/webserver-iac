@@ -89,3 +89,12 @@ module "ecr" {
   webserver_docker_image_tag    = var.webserver_docker_image_tag
   project_tag                   = var.project_tag
 }
+
+module "jenkins" {
+  source             = "./Jenkins-Server"
+  environment        = var.env
+  project_tag        = var.project_tag
+  vpc_id             = module.vpc.vpc_id
+  public_subnet_ids = module.subnets.public_subnet_ids
+  vpc_cidr_block     = var.vpc_cidr_block
+}
