@@ -22,7 +22,14 @@ resource "aws_security_group" "webserver_alb_sg" {
     protocol    = "tcp"
     cidr_blocks = [var.vpc_cidr_block]
   }
-  
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["176.234.9.92/32"] # Or VPN CIDR
+  }
+
   egress {
     from_port   = 0
     to_port     = 0

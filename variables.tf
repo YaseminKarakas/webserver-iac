@@ -61,7 +61,7 @@ variable "container_port" {
 variable "health_check_path" {
   description = "Health check path for webserver service"
   type        = string
-  default     = "/"                                   # TODO: Set to the preferred health check path for pdf-creator container
+  default     = "/health"                                   # TODO: Set to the preferred health check path for pdf-creator container
 }
 
 variable "ecs_min_instances" {

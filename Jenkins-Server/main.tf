@@ -7,7 +7,7 @@ resource "aws_security_group" "jenkins_sg" {
     from_port   = 8080
     to_port     = 8080
     protocol    = "tcp"
-    cidr_blocks = [var.vpc_cidr_block] # Or VPN CIDR
+    cidr_blocks = ["176.234.9.92/32"] # Or VPN CIDR
   }
 
   egress {
@@ -41,10 +41,11 @@ resource "aws_instance" "jenkins" {
               systemctl enable docker
 
               docker run -d \
-                -p 8080:8080 \
-                -p 50000:50000 \
+                -p 8080:8080 -p 50000:50000 \
                 --name jenkins \
+                --user root \
                 -v jenkins_home:/var/jenkins_home \
+                -v /var/run/docker.sock:/var/run/docker.sock \
                 jenkins/jenkins:lts
             EOF
 }

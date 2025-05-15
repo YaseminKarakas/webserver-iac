@@ -39,8 +39,12 @@ resource "aws_ecs_service" "webserver_ecs_service" {
   name            = "${var.service_name_webserver}-ecs-service"
   cluster         = aws_ecs_cluster.ecs_cluster_webserver_iac.id
   task_definition = var.task_definition_arn
-  desired_count   = var.desired_instances          
-  launch_type     = "FARGATE"
+  desired_count   = var.desired_instances     
+       
+  capacity_provider_strategy {
+    capacity_provider = "FARGATE"
+    weight            = 1
+  }
   
   load_balancer {
     target_group_arn = var.target_group_arn

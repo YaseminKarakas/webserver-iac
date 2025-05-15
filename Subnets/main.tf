@@ -61,7 +61,7 @@ resource "aws_route_table_association" "public" {
 }
 
 # If the containers you launch in private subnets do not need to access the internet, you can comment out the rest of this file in order to cut costs.
-/*
+
 # Allocate Elastic IP. (This EIP will be used for the Nat-Gateway in the Public Subnet AZ1)
 resource "aws_eip" "eip_for_nat_gateway_az1" {
   domain = "vpc" 
@@ -150,4 +150,4 @@ resource "aws_route_table_association" "private_subnet_az2_route_table_az2_assoc
   subnet_id      = aws_subnet.private[1].id
   route_table_id = aws_route_table.private_route_table_az2.id
   
-}*/
+}

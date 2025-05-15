@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "ecr_webserver" {
-  name              = "webserver"
+  name              = "webserver-iac"
   force_delete      = true                            # TODO: Set it true to destroy with terraform destroy
 
   image_scanning_configuration {
