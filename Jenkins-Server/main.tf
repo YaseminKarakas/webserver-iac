@@ -7,7 +7,7 @@ resource "aws_security_group" "jenkins_sg" {
     from_port   = 8080
     to_port     = 8080
     protocol    = "tcp"
-    cidr_blocks = ["176.234.9.92/32"] # Or VPN CIDR
+    cidr_blocks = ["217.131.86.166/32"] # Or VPN CIDR
   }
 
   egress {

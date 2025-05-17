@@ -3,7 +3,7 @@ resource "aws_lb" "webserver_alb" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.webserver_alb_sg.id]
   subnets            = var.private_subnet_ids
-  internal           = true 
+  internal           = false 
 
   tags = {
     Environment      = var.environment
@@ -27,7 +27,7 @@ resource "aws_security_group" "webserver_alb_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["176.234.9.92/32"] # Or VPN CIDR
+    cidr_blocks = ["217.131.86.166/32"] # Or VPN CIDR
   }
 
   egress {
